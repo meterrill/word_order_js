@@ -1,17 +1,15 @@
 var wordOrder = function(userPhrase) {
-  var wordList = userPhrase.split(" ");
-  var sortedArray = wordList.sort();
+  var sortedArray = userPhrase.split(" ").sort();
 
   var finalWordList = [];
   var finalWordCount = [];
+  var outputArray = [];
 
   for (var i = 0; i < sortedArray.length; i++) {
     if (sortedArray[i + 1] !== sortedArray[i]) {
       finalWordList.push(sortedArray[i]);
     }
   }
-
-  return finalWordList;
 
   finalWordList.forEach(function(word) {
     var count = 0;
@@ -23,5 +21,10 @@ var wordOrder = function(userPhrase) {
     finalWordCount.push(count);
   });
 
-  return finalWordCount;
+  for (var i = 0; i < finalWordList.length; i++) {
+    outputArray.push([finalWordCount[i], finalWordList[i]]);
+  }
+
+  outputArray.sort().reverse();
+  return outputArray;
 };
