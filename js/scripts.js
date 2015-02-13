@@ -1,6 +1,5 @@
 var wordOrder = function(userPhrase) {
   var sortedArray = userPhrase.split(" ").sort();
-
   var finalWordList = [];
   var finalWordCount = [];
   var outputArray = [];
@@ -28,3 +27,25 @@ var wordOrder = function(userPhrase) {
   outputArray.sort().reverse();
   return outputArray;
 };
+
+
+
+
+$(document).ready(function() {
+  $("form#wordOrderForm").submit(function(event) {
+
+      var input1 = $("input#user_input").val();
+      var result = wordOrder(input1);
+
+
+      htmlToInsert = "";
+      result.forEach(function(word) {
+        htmlToInsert = htmlToInsert + "<li>" + word + "</li>";
+      });
+
+
+      $("#results ul").html(htmlToInsert)
+      event.preventDefault();
+  });
+
+});
